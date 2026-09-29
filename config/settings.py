@@ -15,7 +15,10 @@ STORAGE_DIR = BASE_DIR / "storage" / "db"
 
 # Ensure directories exist
 for directory in [RAW_DATA_DIR, PROCESSED_DATA_DIR, METADATA_DIR, MODELS_DIR, STORAGE_DIR]:
-    directory.mkdir(parents=True, exist_ok=True)
+    try:
+        directory.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        pass
 
 # Database / Storage Configuration
 DB_PATH = STORAGE_DIR / "weather_fusion.duckdb"
@@ -59,3 +62,4 @@ WEATHER_VARIABLES = ["temperature", "rainfall", "wind_speed", "u_wind", "v_wind"
 API_TITLE = "Hybrid AI-NWP Weather Forecast Blending System for India"
 API_VERSION = "1.0.0"
 DEBUG = os.getenv("DEBUG", "False").lower() in ("true", "1", "yes")
+
