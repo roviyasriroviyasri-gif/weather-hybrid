@@ -14,15 +14,24 @@ class StorageEngine:
         self.db_path = db_path
         self._init_db()
 
-    def get_connection(self):
-        """Get DuckDB database connection."""
-        return duckdb.connect(self.db_path)
+    def get_connection(self, read_only: bool = False):
+        """Get DuckDB database connection with read-only and in-memory fallback for serverless."""
+        if not os.path.exists(self.db_path) and read_only:
+            return duckdb.connect(":memory:")
+        try:
+            return duckdb.connect(self.db_path, read_only=read_only)
+        except Exception:
+            try:
+                return duckdb.connect(self.db_path, read_only=True)
+            except Exception:
+                return duckdb.connect(":memory:")
 
     def _init_db(self):
         """Initialize database tables if they do not exist."""
-        with self.get_connection() as conn:
-            # Observations / Reanalysis Table
-            conn.execute("""
+        try:
+            with self.get_connection(read_only=False) as conn:
+                # Observations / Reanalysis Table
+                conn.execute("""
                 CREATE TABLE IF NOT EXISTS observations (
                     timestamp_utc TIMESTAMP,
                     location_id VARCHAR,
@@ -129,6 +138,8 @@ class StorageEngine:
                     PRIMARY KEY (model_name, variable, version)
                 );
             """)
+        except Exception:
+            pass
 
     def upsert_dataframe(self, df: pd.DataFrame, table_name: str, unique_cols: List[str]):
         """
