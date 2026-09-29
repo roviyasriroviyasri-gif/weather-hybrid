@@ -1,0 +1,36 @@
+{
+  "model_name": "ai_stacked_ensemble_temperature",
+  "variable": "temperature",
+  "version": "v3.0.0-production-stacked",
+  "feature_schema": [
+    "ecmwf_temperature_2m",
+    "gfs_temperature_2m",
+    "temp_ensemble_mean",
+    "temp_disagreement",
+    "temp_model_ratio",
+    "dew_point_approx_c",
+    "dew_point_deficit_c",
+    "vapor_pressure_deficit_kpa",
+    "latitude",
+    "longitude",
+    "elevation_m",
+    "hour",
+    "month",
+    "day_of_year",
+    "lead_time_hours",
+    "monsoon_indicator",
+    "rolling_temp_6h_mean",
+    "rolling_temp_24h_mean",
+    "rolling_temp_24h_std",
+    "temp_change_3h"
+  ],
+  "metrics": {
+    "mae": 0.425257099514771,
+    "rmse": 0.6491093917241141,
+    "bias": 0.1565569249425186,
+    "r2": 0.9885675698606847,
+    "xgb_mae": 0.4819909444511382,
+    "lgb_mae": 0.4079537315990492
+  },
+  "training_timestamp_utc": "2026-09-15T09:51:00.084898+00:00"
+}

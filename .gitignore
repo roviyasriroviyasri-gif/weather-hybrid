@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.env
+*.log
+.vscode/
+.idea/
+storage/db/*.duckdb
+*.duckdb
+models/saved/*.joblib
+*.joblib

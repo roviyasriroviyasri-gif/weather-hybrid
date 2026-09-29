@@ -1,0 +1,29 @@
+{
+  "model_name": "ai_stacked_ensemble_wind",
+  "variable": "wind",
+  "version": "v3.0.0-production-stacked",
+  "feature_schema": [
+    "ecmwf_wind_speed_ms",
+    "gfs_wind_speed_ms",
+    "wind_ensemble_mean",
+    "wind_disagreement",
+    "vapor_pressure_deficit_kpa",
+    "latitude",
+    "longitude",
+    "elevation_m",
+    "hour",
+    "month",
+    "day_of_year",
+    "lead_time_hours",
+    "monsoon_indicator",
+    "rolling_wind_6h_mean",
+    "rolling_wind_24h_max",
+    "pressure_tendency_3h"
+  ],
+  "metrics": {
+    "mae": 0.487881544910298,
+    "rmse": 0.6485783712813183,
+    "bias": -0.050862861083761174
+  },
+  "training_timestamp_utc": "2026-09-15T09:51:10.942463+00:00"
+}

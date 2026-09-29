@@ -1,0 +1,34 @@
+{
+  "model_name": "ai_stacked_ensemble_rainfall",
+  "variable": "rainfall",
+  "version": "v3.0.0-production-stacked",
+  "feature_schema": [
+    "ecmwf_precipitation_mm",
+    "gfs_precipitation_mm",
+    "rain_ensemble_mean",
+    "rain_disagreement",
+    "both_predict_rain",
+    "dew_point_deficit_c",
+    "vapor_pressure_deficit_kpa",
+    "latitude",
+    "longitude",
+    "elevation_m",
+    "hour",
+    "month",
+    "day_of_year",
+    "lead_time_hours",
+    "monsoon_indicator",
+    "rolling_rainfall_6h_sum",
+    "rolling_rainfall_24h_sum",
+    "rolling_rainfall_48h_sum",
+    "rainfall_accumulation_6h",
+    "humidity_change_3h",
+    "pressure_tendency_3h"
+  ],
+  "metrics": {
+    "stage1_f1": 0.8235294117647058,
+    "combined_mae": 0.09728484873260321,
+    "combined_rmse": 1.1461848157115695
+  },
+  "training_timestamp_utc": "2026-09-15T09:51:07.726186+00:00"
+}
